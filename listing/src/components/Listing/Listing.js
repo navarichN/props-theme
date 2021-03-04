@@ -13,12 +13,12 @@ export default function Listing({items}) {
                 } else {
                     currencyCode = "USD"
                 }
-                return (
+                if(item.title && item.price) {
+                    return (
                         <div className="item">
                             <div className="item-image">
                                 <a href="https://www.etsy.com/listing/292754135/woodland-fairy">
-                                    <img src="https://img1.etsystatic.com/156/0/12814579/il_570xN.1173240751_50hv.jpg"></img>
-                                    {/* item.MainImage.url_570xN */}
+                                    <img src={(item && item.MainImage && item.MainImage.url_570xN) ? item.MainImage.url_570xN : 'no image'}></img>
                                 </a>
                             </div>
                             <div className="item-details">
@@ -37,7 +37,9 @@ export default function Listing({items}) {
                                 }
                             </div>
                         </div>
-                )
+                    )
+                }
+
             })}
         </div>
     )
